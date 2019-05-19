@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-void main() => runApp(MyApp());
+import 'package:flutter_ui_design/material_design.dart';
+import 'package:flutter_ui_design/cupertino_design.dart';
 
-class MyApp extends StatelessWidget {
+void main() => runApp(DesignApp());
+
+class DesignApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -11,22 +15,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: DesignHomePage(title: 'Flutter UI design'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class DesignHomePage extends StatefulWidget {
+  DesignHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _DesignHomePageState createState() => _DesignHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
+class _DesignHomePageState extends State<DesignHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +40,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            MaterialButton(
+              child: Text('Material design'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MaterialGalleryRoute()),
+                );
+              },
+            ),
+            CupertinoButton(
+              child: Text(
+                'Cupertino design',
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                      builder: (context) => CupertinoGalleryRoute()),
+                );
+              },
             ),
           ],
         ),
