@@ -43,11 +43,7 @@ class _DesignHomePageState extends State<DesignHomePage> {
             MaterialButton(
               child: Text('Material design'),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MaterialGalleryRoute()),
-                );
+                _navigateToMaterialGallery();
               },
             ),
             CupertinoButton(
@@ -55,16 +51,26 @@ class _DesignHomePageState extends State<DesignHomePage> {
                 'Cupertino design',
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                      builder: (context) => CupertinoGalleryRoute()),
-                );
+                _navigateToCupertinoGallery();
               },
             ),
           ],
         ),
       ),
+    );
+  }
+
+  void _navigateToMaterialGallery() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => MaterialGalleryRoute()),
+    );
+  }
+
+  void _navigateToCupertinoGallery() {
+    Navigator.push(
+      context,
+      CupertinoPageRoute(builder: (context) => CupertinoGalleryRoute()),
     );
   }
 }
